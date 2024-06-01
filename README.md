@@ -21,8 +21,7 @@
 
 # Installation
 ```bash
-git clone git@github.com:Osaka-University-Harada-Laboratory/wros.git --recursive --depth 1 && cd wros
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose build --no-cache --parallel 
+git clone git@github.com:Osaka-University-Harada-Laboratory/wros.git --recursive --depth 1 && cd wros && COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose build --no-cache --parallel 
 ```
 
 # Usage
@@ -34,66 +33,87 @@ COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose build --no-cache --p
   ```
 - Execute the container in another terminal
   ```bash
-  xhost +
-  docker exec -it wros_noetic_container bash
+  xhost + && docker exec -it wros_noetic_container bash
   ```
 2. Change planning parameters in wros_tutorials/config/XXX.yaml 
 3. Run a planning process in the container  
+- Use byobu to easily command several commands  
     ```bash
     byobu
-    roslaunch wros_tutorials plan_grasp.launch config:=XXX.yaml
-    # F2 to create a new window
-    rosservice call /plan_grasp
-    # Ctrl + F6 to close the selected window
     ```
+    - First command & F2 to create a new window & Second command ...
+    - Ctrl + F6 to close the selected window
+- Run the grasp planner  
+   ```bash
+    roslaunch wros_tutorials plan_grasp.launch config:=XXX.yaml
+    ```
+- Call the planning service  
+   ```bash
+   rosservice call /plan_grasp
+   ```
 
 ## [Robotiq Hand-E](https://robotiq.com/products/hand-e-adaptive-robot-gripper)
 Please refer to [wros_tutorials/config/planner_params_robotiqhe_example.yaml](catkin_ws/noetic/src/wros_tutorials/config/planner_params_robotiqhe_example.yaml).
 ```bash
-# byobu
+byobu
+```
+```bash
 roslaunch wros_tutorials plan_grasp.launch config:=planner_params_robotiqhe_example.yaml
-# F2
-# rosservice call /plan_grasp
+```
+```bash
+rosservice call /plan_grasp
 ```  
 <img src=image/robotiqhe.gif width=720>  
 
 ## [Robotiq 2F-85](https://robotiq.com/products/2f85-140-adaptive-robot-gripper)
 Please refer to [wros_tutorials/config/planner_params_robotiq85_example.yaml](catkin_ws/noetic/src/wros_tutorials/config/planner_params_robotiq85_example.yaml).
 ```bash
-# byobu
+byobu
+```
+```bash
 roslaunch wros_tutorials plan_grasp.launch config:=planner_params_robotiq85_example.yaml
-# F2
-# rosservice call /plan_grasp
+```
+```bash
+rosservice call /plan_grasp
 ```  
 <img src=image/robotiq85.gif width=720>  
 
 ## [Robotiq 2F-140](https://robotiq.com/products/2f85-140-adaptive-robot-gripper)
 Please refer to [wros_tutorials/config/planner_params_robotiq140_example.yaml](catkin_ws/noetic/src/wros_tutorials/config/planner_params_robotiq140_example.yaml).
 ```bash
-# byobu
+byobu
+```
+```bash
 roslaunch wros_tutorials plan_grasp.launch config:=planner_params_robotiq140_example.yaml
-# F2
-# rosservice call /plan_grasp
+```
+```bash
+rosservice call /plan_grasp
 ```  
 <img src=image/robotiq140.gif width=720>  
 
 ## Suction gripper
 Please refer to [wros_tutorials/config/planner_params_suction_example.yaml](catkin_ws/noetic/src/wros_tutorials/config/planner_params_suction_example.yaml).
 ```bash
-# byobu
+byobu
+```
+```bash
 roslaunch wros_tutorials plan_grasp.launch config:=planner_params_suction_example.yaml
-# F2
-# rosservice call /plan_grasp
+```
+```bash
+rosservice call /plan_grasp
 ```  
 <img src=image/suction.gif width=720>  
 
 ## [CONVUM balloon hand SGB30](https://convum.co.jp/products/en/other-en/sgb/)
 Please refer to [wros_tutorials/config/planner_params_sgb30_example.yaml](catkin_ws/noetic/src/wros_tutorials/config/planner_params_sgb30_example.yaml).
 ```bash
-# byobu
+byobu
+```
+```bash
 roslaunch wros_tutorials plan_grasp.launch config:=planner_params_sgb30_example.yaml
-# F2
-# rosservice call /plan_grasp
+```
+```bash
+rosservice call /plan_grasp
 ```  
 <img src=image/sgb30.gif width=720>  
 
@@ -110,4 +130,4 @@ We always welcome collaborators!
 
 ## License
 
-This software is released under the MIT License, see [LICENSE](./LICENSE).
+This software is released under the BSD-3-Clause License, see [LICENSE](./LICENSE).
